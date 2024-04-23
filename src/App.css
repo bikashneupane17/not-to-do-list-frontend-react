@@ -1,0 +1,15 @@
+.wrapper {
+  background: linear-gradient(#e66465, #7079d7);
+  min-height: 100vh;
+}
+
+.table-custom {
+  --bs-table-bg: transparent !important;
+}
+
+.make-colourful {
+  filter: grayscale(100%);
+}
+.make-colourful:hover {
+  filter: grayscale(0%);
+}
