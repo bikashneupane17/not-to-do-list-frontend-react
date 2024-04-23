@@ -107,9 +107,14 @@ export const Table = ({ itemList, switchTask, fetchAllTasks }) => {
               id="selectEntryList"
               onChange={handleOnSelectAll}
               value="entry"
-              checked={entries.every((item) => idsToDelete.includes(item._id))}
+              checked={
+                entries.length > 0 &&
+                entries.every((item) => idsToDelete.includes(item._id))
+              }
             />
+            {"  "}
             <label htmlFor="selectEntryList">Select All Entry List</label>
+            <hr />
           </div>
 
           <table className="table table-custom table-hover border">
@@ -128,18 +133,30 @@ export const Table = ({ itemList, switchTask, fetchAllTasks }) => {
               id="selectBadList"
               onChange={handleOnSelectAll}
               value="bad"
-              checked={badList.every((item) => idsToDelete.includes(item._id))}
+              checked={
+                badList.length > 0 &&
+                badList.every((item) => idsToDelete.includes(item._id))
+              }
             />
+            {"  "}
             <label htmlFor="selectBadList">Select All Bad List</label>
+            <hr />
           </div>
           <table className="table table-custom table-hover border table-bad">
             <tbody id="table-not-to-do-lsit">{displayBadRow()}</tbody>
           </table>
+          <div className="alert alert-info ">
+            You could have saved{" "}
+            <span id="badHour">
+              {badList.reduce((acc, item) => acc + item.hour, 0)}
+            </span>{" "}
+            hour(s)
+          </div>
         </div>
         <div className="d-grid mb-3">
           <button className="btn btn-danger btn-lg" onClick={handleDelete}>
-            <i className="fa-solid fa-trash"></i> Delete {idsToDelete.length}{" "}
-            task(s)
+            <i className="fa-solid fa-trash delete-hover"></i> Delete{" "}
+            {idsToDelete.length} task(s)
           </button>
         </div>
       </div>

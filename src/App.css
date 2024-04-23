@@ -7,9 +7,9 @@
   --bs-table-bg: transparent !important;
 }
 
-.make-colourful {
+/* .make-colourful {
   filter: grayscale(100%);
 }
 .make-colourful:hover {
   filter: grayscale(0%);
-}
+} */

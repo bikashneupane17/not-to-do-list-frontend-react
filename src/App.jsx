@@ -25,10 +25,6 @@ function App() {
 
   const totalHours = taskList.reduce((total, item) => total + item.hour, 0);
 
-  const badHours = taskList
-    .filter((item) => item.type === "bad")
-    .reduce((total, item) => total + +item.hour, 0);
-
   return (
     <>
       <div className="wrapper">
@@ -43,7 +39,7 @@ function App() {
             fetchAllTasks={fetchAllTasks}
           />
 
-          <Hours totalHours={totalHours} badHours={badHours} />
+          <Hours totalHours={totalHours} />
         </div>
       </div>
     </>
