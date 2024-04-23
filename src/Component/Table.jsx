@@ -5,6 +5,7 @@ export const Table = ({ itemList, switchTask, fetchAllTasks }) => {
   const [idsToDelete, setIdsToDelete] = useState([]);
 
   const entries = itemList.filter((task) => task.type === "entry");
+
   const badList = itemList.filter((task) => task.type === "bad");
 
   const handleDelete = async () => {
@@ -23,18 +24,11 @@ export const Table = ({ itemList, switchTask, fetchAllTasks }) => {
     checked
       ? setIdsToDelete([...idsToDelete, value])
       : setIdsToDelete(idsToDelete.filter((_ids) => _ids !== value));
-
-    // if (checked) {
-    //   //add
-    //   setIdsToDelete([...idsToDelete, value]);
-    // } else {
-    //   //remove
-    //   setIdsToDelete(idsToDelete.filter((_ids) => _ids !== value));
-    // }
   };
 
   const handleOnSelectAll = (e) => {
     const { checked, value } = e.target;
+
     const ids =
       value === "entry"
         ? entries.map((item) => item._id)
@@ -42,9 +36,9 @@ export const Table = ({ itemList, switchTask, fetchAllTasks }) => {
 
     checked
       ? setIdsToDelete([...idsToDelete, ...ids])
-      : setIdsToDelete(idsToDelete.filter((id) => !idsToDelete.includes(id)));
+      : setIdsToDelete(idsToDelete.filter((id) => !ids.includes(id)));
   };
-  console.log(idsToDelete);
+
   const displayEntryRow = () => {
     return entries.map((item, index) => (
       <tr key={item._id}>
